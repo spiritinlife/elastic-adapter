@@ -41,6 +41,10 @@ final class SearchRequest implements ArrayableInterface
     /**
      * @var array|null
      */
+    private $rescore;
+    /**
+     * @var array|null
+     */
     private $aggregations;
     /**
      * @var array|null
@@ -112,6 +116,12 @@ final class SearchRequest implements ArrayableInterface
         $this->collapse = $collapse;
         return $this;
     }
+    
+    public function setRescore(array $rescore): self
+    {
+        $this->rescore = $rescore;
+        return $this;
+    }
 
     public function setAggregations(array $aggregations): self
     {
@@ -165,6 +175,7 @@ final class SearchRequest implements ArrayableInterface
             'size' => 'size',
             'suggest' => 'suggest',
             'collapse' => 'collapse',
+            'rescore' => 'rescore',
             'aggregations' => 'aggregations',
             'source' => '_source',
             'postFilter' => 'post_filter',
